@@ -1,0 +1,9 @@
+build/
+dist/
+javaee-starter-ejb/build/
+javaee-starter-ejb/dist/
+javaee-starter-ejb/nbproject/private/
+javaee-starter-war/build/
+javaee-starter-war/dist/
+javaee-starter-war/nbproject/private/
+nbproject/private/
