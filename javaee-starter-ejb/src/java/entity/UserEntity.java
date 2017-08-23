@@ -6,11 +6,12 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlElement;
+import javax.persistence.Temporal;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -28,6 +29,13 @@ public class UserEntity implements Serializable {
     
     private String username;
     private String email;
+    
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date createdAt;
+    
+    public UserEntity(){
+        this.createdAt = new Date();
+    }
 
     public Long getId() {
         return id;
@@ -89,6 +97,20 @@ public class UserEntity implements Serializable {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the createdAt
+     */
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    /**
+     * @param createdAt the createdAt to set
+     */
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
     
 }
