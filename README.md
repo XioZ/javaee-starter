@@ -1,16 +1,17 @@
 # JavaEE quick-starter
-This quick-starter aims to help fast set up for JavaEE (J2EE) projects with Netbeans IDE. The configuration is the biggest blocker for beginner to enjoy JavaEE. This quick-starter minimize the configuration for basic development purpose. For advanced development, you are not recommended to set up your project by using this quick-starter.
+This quick-starter aims to facilitate fast set up for JavaEE (J2EE) projects with Netbeans IDE. The configuration is usually one blocker for beginner to enjoy JavaEE. This quick-starter minimize the configuration for basic development purpose. For advanced development, you are not recommended to set up your project by using this quick-starter.
 
 ## Updates
 - Configuration with Glassfish JDBC resources (23 Aug 2017)
 - Webserices/APIs (23 Aug 2017)
 
 ## Requirement
+- Skip this section if you have already set up the environment for JaveEE development
 - Java (7 or 8)
-- Netbeans IDE (8.0 or higher) with Glassfish
+- Netbeans IDE (8.0 or higher) with Glassfish Server. To verify proper installation of Netbeans IDE and Glassfish Server, run Glassfish Server and access admin console by [localhost:4848](http://localhost:4848/)
 - Database:
     + Local or cloud jdbc-compatiable databases. MySQL is preferred.
-    + Get the following parameters prepared: **host**, **port**, **database name**, **user name** and **passowrd**. Make sure all rights are granted for the dabases to the user.
+    + Get the following parameters prepared: **host**, **port**, **database name**, **username** and **passowrd**. Make sure all rights are granted for the dabases to the user.
     + Create proper JDBC connection pool in Glassfish server admin console (by default can be accessed by [localhost:4848](http://localhost:4848/)) with the parameter above. Click 'Ping' button on the page to test connectivity.
     + Create proper JDBC resource with the connection pool created in previous step. Conventionally, JDBC resource should name like 'jdbc/XXXX'.
 
