@@ -7,7 +7,9 @@ package webservice;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
+import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
+
 
 /**
  *
@@ -31,7 +33,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(webservice.HelloResource.class);
+        resources.add(webservice.UserResource.class);
     }
     
 }

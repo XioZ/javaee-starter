@@ -25,7 +25,7 @@ This quick-starter aims to facilitate fast set up for JavaEE (J2EE) projects wit
     ```
     or download the repo as .zip file
 2. Under ```javaee-starter/javaee-starter-ejb/src/conf/``` in your file system (or ```javaee-starter-ejb/Configuration Files``` in Netbeans IDE project browser), find ```persistence.xml```. Change 'Data Source' to the JDBC resources created in the previous step.
-3. In Netbeans IDE, start Glassfish server. Then in project browser, right click the triangle icon for **javaee-starter** and click 'Deploy'.
+3. In Netbeans IDE, start Glassfish server. Then in project browser, right click the triangle icon for **javaee-starter** and click 'Clean and Build', after finish click 'Deploy'.
 
 ## Test
 - Access a default web index page by [localhost:8080/javaee-starter-war](http://localhost:8080/javaee-starter-war/)

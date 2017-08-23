@@ -13,23 +13,27 @@
                     <file>${reference.javaee-starter-ejb.dist}</file>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.jersey-client-2.25.1.jar}</file>
+                    <file>${file.reference.jersey-client-1.19.1.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.jersey-common-2.25.1.jar}</file>
+                    <file>${file.reference.jersey-core-1.19.1.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.jersey-server-2.25.1.jar}</file>
+                    <file>${file.reference.jersey-media-multipart-2.23.2.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.jersey-container-servlet-core-2.25.1.jar}</file>
+                    <file>${file.reference.jersey-json-1.19.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.jersey-media-multipart-2.25.1.jar}</file>
+                    <file>${file.reference.jersey-media-json-jackson-2.22.1.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.jackson-annotations-2.2.3.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
