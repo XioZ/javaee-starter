@@ -1,4 +1,5 @@
-# javaee starter
+# JavaEE quick-starter
+This quick-starter aims to help fast set up for JavaEE (J2EE) projects with Netbeans IDE. The configuration is the biggest blocker for beginner to enjoy JavaEE. This quick-starter minimize the configuration for basic development purpose. For advanced development, you are not recommended to set up your project by using this quick-starter.
 
 ## Updates
 - Configuration with Glassfish JDBC resources (23 Aug 2017)
