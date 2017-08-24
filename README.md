@@ -2,11 +2,11 @@
 This quick-starter aims to facilitate fast set up for JavaEE (J2EE) projects with Netbeans IDE. The configuration is usually one blocker for beginner to enjoy JavaEE. This quick-starter minimize the configuration for basic development purpose. For advanced development, you are not recommended to set up your project by using this quick-starter.
 
 ## Updates
+_(For maven enabling version: [vislx/javaee-starter-maven](https://github.com/vislx/javaee-starter-maven))_
 - JDBC/JPA persistent (23 Aug 2017)
 - Webserices/RESTful APIs (23 Aug 2017)
-- NamedQuery (working)
+- NamedQuery (24 Aug 2017)
 - Basic fullstack CRUD (working)
-- Explainantion (working)
 
 ## Requirement
 - Skip this section if you have already set up the environment for JaveEE development
@@ -29,7 +29,6 @@ This quick-starter aims to facilitate fast set up for JavaEE (J2EE) projects wit
 
 ## Test
 - Access a default web index page by [localhost:8080/javaee-starter-war](http://localhost:8080/javaee-starter-war/)
-- Access a default webservice by [localhost:8080/javaee-starter-war/api/hello](http://localhost:8080/javaee-starter-war/api/hello)
 
 
 
