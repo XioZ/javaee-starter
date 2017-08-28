@@ -1,7 +1,6 @@
 package sessionbean;
 
 import entity.UserEntity;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -27,13 +26,15 @@ public class UserSessionBean implements UserSessionBeanLocal {
     
     @Override
     public UserEntity getUserByUsername(String username) throws Exception{
-        UserEntity result;
-        result = (UserEntity) em.createNamedQuery("UserEntity.findByUsername")
+        List<UserEntity> rl =  (List<UserEntity>) em.createNamedQuery("UserEntity.findByUsername")
                 .setParameter("username", username)
                 .setMaxResults(1)
-                .getResultList()
-                .get(0);
-        return result;
+                .getResultList();
+        try{
+            return rl.get(0);
+        } catch(ArrayIndexOutOfBoundsException ex){
+            return null;
+        }
     }
     
     @Override
@@ -44,10 +45,14 @@ public class UserSessionBean implements UserSessionBeanLocal {
     }
     
     @Override
-    public void createUser(String username, String email) throws Exception{
-        UserEntity u = new UserEntity(username, email);
+    public UserEntity createUser(String username, String email) throws Exception{
+        UserEntity u = new UserEntity();
+        u.setUsername(username);
+        u.setEmail(email);
         em.persist(u);
         em.flush();
+        
+        return u;
     }
     
     @Override
@@ -55,5 +60,27 @@ public class UserSessionBean implements UserSessionBeanLocal {
         UserEntity u = getUserByUsername(username);
         em.remove(u);
         em.flush();
+    }
+    
+    @Override
+    public UserEntity updateUser(UserEntity changed) throws Exception{
+        Long id = changed.getId();
+        String username = changed.getUsername();
+        UserEntity original = em.find(UserEntity.class, id);
+        
+        
+        /**
+         * You need more validation here.
+         * In order to meet business logic requirements
+         */
+        if (changed.getEmail().length() > 0){
+            original.setEmail(changed.getEmail());
+            System.out.println("Email set:" + original.getEmail());
+        }
+        em.flush();
+        em.refresh(original);
+        em.flush();
+        
+        return original;
     }
 }

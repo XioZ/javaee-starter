@@ -5,9 +5,12 @@
  */
 package webservice;
 
+
 import entity.UserEntity;
+import java.util.Date;
 import java.util.List;
-import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -21,6 +24,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import sessionbean.UserSessionBeanLocal;
+import util.ResponseBodyBuilder;
+
 
 /**
  * REST Web Service
@@ -28,12 +33,13 @@ import sessionbean.UserSessionBeanLocal;
  * @author victor
  */
 @Path("user")
+@RequestScoped
 public class UserResource {
 
     @Context
     private UriInfo context;
     
-    @EJB
+    @Inject
     private UserSessionBeanLocal user_sb;
 
     public UserResource() {
@@ -42,14 +48,12 @@ public class UserResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllUser() {
-//        try{
-//            List<UserEntity> result = user_sb.getAllUser();
-//            return Response.ok(result).build();
-//        } catch (Exception ex){
-//            return Response.status(Response.Status.BAD_REQUEST).build();
-//        }
-//        
-        return Response.ok("Not support yet").build();
+        try{
+            List<UserEntity> resultList = user_sb.getAllUser();
+            return Response.ok(ResponseBodyBuilder.buildList(resultList)).build();
+        } catch (Exception ex){
+            return Response.ok(ResponseBodyBuilder.buildMessage(400, "find all user failed")).build();
+        }
     }
     
     @GET
@@ -58,30 +62,49 @@ public class UserResource {
     public Response getUserByUsername(@PathParam("username") String username) {
         try{
             UserEntity result = user_sb.getUserByUsername(username);
-            return Response.ok(result).build();
+            return Response.ok(ResponseBodyBuilder.buildObject(result)).build();
         } catch (Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.ok(ResponseBodyBuilder.buildMessage(400, "find user failed")).build();
         }
     }
     
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response putJson(String content) {
-        return Response.ok("Not support yet").build();
+    public Response createUser() {
+        try{
+            String time = String.valueOf(new Date().getTime());
+            String username = "random" + time;
+            String email = time + "@random.com";
+            UserEntity u = user_sb.createUser(username, email);
+            return Response.ok(ResponseBodyBuilder.buildObject(u)).build();
+        } catch (Exception ex){
+            return Response.ok(ResponseBodyBuilder.buildMessage(400, "create user failed")).build();
+        }
     }
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response postJson(String content) {
-        return Response.ok("Not support yet").build();
+    public Response updateUser(UserEntity changed) {
+        try{
+            UserEntity updated = user_sb.updateUser(changed);
+            return Response.ok(ResponseBodyBuilder.buildObject(updated)).build();
+        } catch (Exception ex) {
+            return Response.ok(ResponseBodyBuilder.buildMessage(400, "update user failed")).build();
+        }
+        
     }
     
     @DELETE
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{username}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteJson(String content) {
-        return Response.ok("Not support yet").build();
+    public Response deleteUserbyUsername(@PathParam("username") String usernam) {
+        try{
+            user_sb.deleteUserByUsername(usernam);
+            return Response.ok(ResponseBodyBuilder.buildMessage(200, "delete successfully!")).build();
+        }catch (Exception ex){
+            return Response.ok(ResponseBodyBuilder.buildMessage(400, "delete user failed")).build();
+        }
     }
 }

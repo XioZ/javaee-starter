@@ -15,8 +15,10 @@ public interface UserSessionBeanLocal {
 
     public List<UserEntity> getAllUser() throws Exception;
 
-    public void createUser(String username, String email) throws Exception;
+    public UserEntity createUser(String username, String email) throws Exception;
 
     public void deleteUserByUsername(String username) throws Exception;
+
+    public UserEntity updateUser(UserEntity changed) throws Exception;
     
 }
